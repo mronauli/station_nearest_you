@@ -1,0 +1,9 @@
+<div class="row">
+    <p class="name"><%= @nearest_station["station_name"] %></p>
+    <p class="address"><%= "#{@nearest_station['street_address']}, #{@nearest_station['city']}, #{@nearest_station['state']}, #{@nearest_station['zip']}" %></p>
+    <p class="fuel_type"><%= @nearest_station["fuel_type_code"] %></p>
+    <p class="access_times"><%= @nearest_station["access_days_time"] %></p>
+    <p class="distance"><%= @address_info.distance %></p>
+    <p class="travel_time"><%= @@address_info.travel_time %></p>
+    <p class="directions"><%= @address_info.directions %></p>
+</div>
