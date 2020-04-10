@@ -1,14 +1,7 @@
 class SearchController < ApplicationController
   def index
-    conn = Faraday.new("https://developer.nrel.gov") do |f|
-      f.adapter Faraday.default_adapter
-      f.params['api_key'] = ENV['NREL_KEY']
-      f.params['location'] = params["location"]
-      f.params['format'] = "json"
-    end
-    response = conn.get("/api/alt-fuel-stations/v1/nearest")
-    json = JSON.parse(response.body, symbolized: true)
-    @nearest_station = json["fuel_stations"][0]
+    service = StationService.get_station(params)
+    @station = Station.new(params)
 
     # conn = Faraday.new("https://maps.googleapis.com") do |f|
     #   f.adapter Faraday.default_adapter
